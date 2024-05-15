@@ -7,16 +7,15 @@ PORT      STATE SERVICE VERSION
 8500/tcp  open  fmtp?
 49154/tcp open  msrpc   Microsoft Windows RPC</pre>
 
-![alt text](<../Images/Arctic #1.png>)
+
 
 - CFIDE directory stands for ColdFusion Integrated Development Environment
 - Directory in Adobe ColdFusion installations that contains various files and resources used by ColdFusion applications
 
-![alt text](<../Images/Arctic #2.png>)
 
-![alt text](<../Images/Arctic #3.png>)
 
-![alt text](<../Images/Arctic #4.png>)
+
+
 
 ## Method 1 Metasploit
 
