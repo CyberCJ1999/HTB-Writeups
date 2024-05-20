@@ -106,7 +106,7 @@ smb: \> ls
 
 <pre>guestmount -a '/home/kali/HacktheBox/Bastion/backups/WindowsImageBackup/L4mpje-PC/Backup 2019-02-22 124351/9b9cfbc4-369e-11e9-a17c-806e6f6e6963.vhd' -m /dev/sda1 --ro /home/kali/HacktheBox/Bastion/mountbackup</pre>
 
-[text](<Bastion Writeup.md>)
+![alt text](<../Images/Bastion Mount.png>)
 
 - Browse to the following `\Windows\System32\config\`
 - Copy SAM + SYSTEM + SECURITY files
