@@ -1,6 +1,6 @@
 <center>
 
-# [Bastion](/Bastion/Bastion%20Writeup.md)
+# [Bastion Writeup](/Bastion/Bastion%20Writeup.md)
 
 </center>
 
