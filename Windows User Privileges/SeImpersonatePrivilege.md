@@ -1,4 +1,4 @@
-# SeImpersonate 
+# SeImpersonatePrivilege
 The `SeImpersonatePrivilege` is a powerful security privilege in Microsoft Windows that allows a process to impersonate the security context of another user.
 
 * `SeImpersonatePrivilege` allows a process to perform actions on behalf of another user
